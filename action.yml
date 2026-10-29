@@ -1,0 +1,47 @@
+name: 'Bump Marketing Version'
+description: 'Bump MARKETING_VERSION from the latest live App Store Connect version.'
+author: 'Apple Github Actions (iOS & macOS)'
+inputs:
+  issuer-id:
+    description: 'App Store Connect API Key Issuer Identifier.'
+    required: true
+  api-key-id:
+    description: 'App Store Connect API Key ID.'
+    required: true
+  api-private-key:
+    description: 'App Store Connect API private key (PKCS8 PEM).'
+    required: true
+  version-file:
+    description: 'Path to the xcconfig file containing MARKETING_VERSION and PRODUCT_BUNDLE_IDENTIFIER.'
+    required: false
+    default: 'Config/Shared.xcconfig'
+  skip-env-file:
+    description: 'Optional second file that also contains MARKETING_VERSION (for example ios/Skip.env).'
+    required: false
+  release-notes-root:
+    description: 'Root directory for per-version release notes folders.'
+    required: false
+    default: 'release-notes'
+  platform:
+    description: 'App Store Connect platform (IOS, MAC_OS, TV_OS, VISION_OS). Wins over platform-file when set.'
+    required: false
+  platform-file:
+    description: 'Optional file whose first non-comment line is the platform.'
+    required: false
+  dry-run:
+    description: 'Report what would change without writing files.'
+    required: false
+    default: 'false'
+outputs:
+  bumped:
+    description: 'true when MARKETING_VERSION was updated.'
+  old-version:
+    description: 'Previous MARKETING_VERSION when bumped.'
+  new-version:
+    description: 'New MARKETING_VERSION when bumped.'
+runs:
+  using: 'node24'
+  main: 'dist/index.js'
+branding:
+  icon: 'chevrons-up'
+  color: 'green'
