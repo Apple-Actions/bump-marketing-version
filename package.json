@@ -1,6 +1,6 @@
 {
   "name": "bump-marketing-version-action",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "GitHub Action to bump MARKETING_VERSION from the latest live App Store Connect version.",
   "type": "module",
   "main": "src/main.ts",
